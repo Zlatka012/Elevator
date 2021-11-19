@@ -125,8 +125,10 @@ floorBtns.forEach(function(btn) {
         }
 
         function setIt(x) {
-            // Floor's conditions check.
+            // Highlight floor(s) accordingly.
+
             if ( (!CL(x,"has","chosen")) || ( !CL(x,"has","light"))) {
+                // Select the caller's position after checking the conditions.
                 CL(x, "add", "chosen");
 
                 // Set destination.
@@ -150,6 +152,7 @@ floorBtns.forEach(function(btn) {
         }
 
         function answer() {
+            // Take action if someone calls the lift.
             if (currFloor == where) {
                 state = "waiting";
                 updateInfo();
@@ -160,6 +163,7 @@ floorBtns.forEach(function(btn) {
         }
 
         function findWay() {
+            // Choose the right direction to the caller.
             if (currFloor < where) {
                 direction = "↑";
                 go("up");
@@ -172,6 +176,7 @@ floorBtns.forEach(function(btn) {
         }
 
         function go(x) {
+            // Go by the right direction.
             state = "moving";
             if (x == "up") {
                 differ = where - currFloor;
@@ -183,7 +188,7 @@ floorBtns.forEach(function(btn) {
         }
 
         function stepByStep(x, y) {
-            // Move through floors towards destination.
+            // Move through floors towards destination and stop.
             for (let i = 1; i <= x; i++) {
 
                 setTimeout(function() {
@@ -223,6 +228,7 @@ let inside = getID("numbers")
         }
 
         function waitForUser() {
+            // Wait 3 seconds to be sure if someone entered elevator.
             let now = showFloor.textContent;
             setTimeout(function() {
                 if ( (where == null) && ( showFloor.textContent == now) ) {
@@ -232,6 +238,7 @@ let inside = getID("numbers")
         }
 
         function closeDoor() {
+            // Hide the cabin's inside.
             CL(inside,"add","hidden");
             state = "still";
             updateInfo();
@@ -240,6 +247,7 @@ let inside = getID("numbers")
         }
 
         function clearOrder() {
+            // Make floor buttons clickable again.
             floorBtns.forEach(function(btn) {
                 CL(btn,"remove","chosen");
                 CL(btn,"remove","light");
@@ -247,6 +255,7 @@ let inside = getID("numbers")
         }
 
         function noneBtn() {
+            // Make all floor buttons equally unusable - no chosen one
             floorBtns.forEach(function(btn) {
                 CL(btn,"remove","chosen");
                 CL(btn,"add","light");
@@ -254,6 +263,7 @@ let inside = getID("numbers")
         }
 
         function hideInside() {
+            // Doors aren't transparent - inside's hidden.
             CL(inside,"add", "hidden");
             clearOrder();
         }
@@ -266,17 +276,19 @@ controls.forEach(function(btn) {
     btn.addEventListener("click", goToNext)
 });
 
-function goToNext() {
-    setDestination(this);
+        function goToNext() {
+            // Go where passanger told you to.
+            setDestination(this);
 
-    if (where != currFloor) {
-        hideInside();
-        noneBtn();
-        findWay();
-    }
-}
+            if (where != currFloor) {
+                hideInside();
+                noneBtn();
+                findWay();
+            }
+        }
 
-function setDestination(x) {
-    where = x.textContent;
-    where = parseInt(where, 10);
-}
+        function setDestination(x) {
+            // Tell elevator where to go.
+            where = x.textContent;
+            where = parseInt(where, 10);
+        }
