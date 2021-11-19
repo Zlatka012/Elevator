@@ -130,8 +130,7 @@ floorBtns.forEach(function(btn) {
                 CL(x, "add", "chosen");
 
                 // Set destination.
-                where = x.textContent;
-                where = parseInt(where, 10);
+                setDestination(x);
 
                 // Indicate moving elevators to all floors.
                 lightOthers();
@@ -263,15 +262,21 @@ let inside = getID("numbers")
 let controls = arrayFromClass("select");
 
 controls.forEach(function(btn) {
-    btn.addEventListener("click", function() {
-        // Set next destination.
-        where = this.textContent;
-        where = parseInt(where, 10);
-
-        if (where != currFloor) {
-            hideInside();
-            noneBtn();
-            findWay();
-        }
-    });
+    // Set next destination.
+    btn.addEventListener("click", goToNext)
 });
+
+function goToNext() {
+    setDestination(this);
+
+    if (where != currFloor) {
+        hideInside();
+        noneBtn();
+        findWay();
+    }
+}
+
+function setDestination(x) {
+    where = x.textContent;
+    where = parseInt(where, 10);
+}
