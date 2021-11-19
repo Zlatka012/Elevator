@@ -4,6 +4,7 @@ This algorithm is lightened version of what frequently used elevator would posse
 this elevator is going to have the best advantage of going in the straight direction without changing its way (unless users in cabin decide to go somewhere else than firstly intentioned), but the biggest disadvantage of not being able to combine routes to serve travelers more strategically.
 
 version: 1.0.0
+language: JavaScript
 
 Mechanism description:
 -
