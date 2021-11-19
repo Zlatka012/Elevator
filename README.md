@@ -22,7 +22,7 @@ Logical steps this algorithm follows:
 - elevator in use won't be stoppable by some other caller
 
 
-WAYS TO RUN IN ON YOUR MACHINE:
+WAYS TO RUN IT ON YOUR MACHINE:
 -
 - I uploaded it on my domain, so you can access it by going directly on mainpage of https://vyvojwebu.sk and interact with it in your web browser.
 (Note: I ensured that it's compatible with listed browsers: Google Chrome, MS Edge, Mozilla Firefox, Opera and Internet Explorer v.11. Safari should 
