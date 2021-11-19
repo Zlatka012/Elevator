@@ -3,8 +3,8 @@
 This algorithm is lightened version of what frequently used elevator would possess. While developing structure of this program I assumed that 
 this elevator is going to have the best advantage of going in the straight direction without changing its way (unless users in cabin decide to go somewhere else than firstly intentioned), but the biggest disadvantage of not being able to combine routes to serve travelers more strategically.
 
-version: 1.0.0
-language: JavaScript
+-- version: 1.0.0
+-- language: JavaScript
 
 Mechanism description:
 -
@@ -36,6 +36,12 @@ How to use it:
 2. When elevator arrives at your floor and opens its door, select the desired destination in the inside of the cabin.
 3. When doors are opened, you can operate it from inside as many times as you want.
 4. When calling buttons aren't lit up, you can call it by using them.
+
+Features to surely come (in the future):
+-
+- fluent passengers taking throughout elevator's way down
+- 2 buttons on each floor for the direction ("up" and "down") selection
+- progressive route calculating by intellisense to take the most passangers (aiming on the efficiency regardless what the capacity is)
 
 Notes under the line
 -
