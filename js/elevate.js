@@ -63,14 +63,13 @@ let elevDir = getID("direction");
             elem.textContent = x;
         }
 
-        function displayFloor() {
-            // Updating elevator's current position.
-            showElev(showFloor, currFloor);
-        }
-
-        function displayDirection() {
-            // Updating elevator's direction
-            showElev(elevDir, direction);
+        function display(x) {
+            // Display output data according to a given parameter.
+            if (x == "floor") {
+                showElev(showFloor, currFloor);
+            } else if (x == "direction") {
+                showElev(elevDir, direction);
+            }
         }
 
 // Actual info.
@@ -81,8 +80,8 @@ let where;
 
         function updateInfo() {
             displayState();
-            displayFloor();
-            displayDirection();
+            display("floor");
+            display("direction");
         }
 
 // Show real-time output for user.
@@ -195,7 +194,7 @@ floorBtns.forEach(function(btn) {
                     }
 
                     // Real-time output.
-                    displayFloor();
+                    display("floor");
                     updateInfo();
                 }, i*1300);
             }
