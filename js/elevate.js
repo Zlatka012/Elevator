@@ -1,3 +1,4 @@
+
         // ForEach polyfill
             // Production steps of ECMA-262, Edition 5, 15.4.4.18
             // Reference: https://es5.github.io/#x15.4.4.18
@@ -101,23 +102,18 @@ floorBtns.forEach(function(btn) {
             // Actions of elevator call.
             let next = this;
 
-            if ( isStill() ) {
+            if ( boolState("isStill") ) {
                 setIt(next);
-            } else if ( isWaiting() ) {
-                chooseWay();
-            } 
-        }
-
-        function isStill() {
-            if (state == "still") {
-                return true;
-            } else {
-                return false;
             }
         }
 
-        function isWaiting() {
-            if (state == "waiting") {
+        function boolState(x) {
+            // Logic: if ( isStill || isMoving || isWaiting ) => true.
+            if (
+                ( (x == "isStill") && (state == "still") ) ||
+                ( (x == "isMoving") && (state == "moving") ) ||
+                ( (x == "isWaiting") && (state == "waiting") )
+            ) {
                 return true;
             } else {
                 return false;
